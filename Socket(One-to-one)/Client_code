@@ -9,18 +9,16 @@ public class Client {
             Socket socket = new Socket("localhost", 12345);
             System.out.println("Connected to the server...");
 
-            // Create input and output streams for communication with the server
+
             DataInputStream inputStream = new DataInputStream(socket.getInputStream());
             DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
 
-            // Receive the greeting message from the server
             String serverMessage = inputStream.readUTF();
             System.out.println("Message from server: " + serverMessage);
 
-            // Send a message to the server
+
             outputStream.writeUTF("Hello, Server! This is the Client.");
 
-            // Close the streams and socket
             inputStream.close();
             outputStream.close();
             socket.close();
